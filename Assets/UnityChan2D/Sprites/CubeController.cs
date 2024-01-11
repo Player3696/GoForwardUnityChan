@@ -22,7 +22,7 @@ public class CubeController : MonoBehaviour
     {
         // キューブを移動させる
         transform.Translate(this.speed * Time.deltaTime, 0, 0);
-        GetComponent<AudioSource>().Play();//★1
+        
         // 画面外に出たら破棄する
         if (transform.position.x < this.deadLine)
         {
@@ -30,11 +30,21 @@ public class CubeController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    //void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter2D  (Collision2D collision)
     {
-        //if(collision.gameObject.name == "CubePrefab")
-        //{
-            GetComponent<AudioSource>().Play();//★2
-        //}
+        //Debug.Log(collision.gameObject.name);
+        /*
+        if(collision.gameObject.name == "CubePrefab(Clone)")
+        {
+            Debug.Log("音を鳴らします");
+            GetComponent<AudioSource>().Play();
+        }
+        */
+        Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.tag == "CubePrefabTag")
+        {
+            GetComponent<AudioSource>().Play();
+        }
     }
 }
