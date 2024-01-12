@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - CubePrefabTag
+  - groundTag
   layers:
   - Default
   - TransparentFX
